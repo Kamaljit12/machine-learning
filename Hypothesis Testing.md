@@ -1703,3 +1703,423 @@ There is statistically significant evidence that the new website improved conver
 ```text
 Hypothesis testing helps determine whether observed differences are likely due to real effects or simply random variation.
 ```
+
+# 1. What is a p-value?
+
+## Interview Answer
+
+A p-value is the probability of obtaining results at least as extreme as the observed results, assuming that the Null Hypothesis (H₀) is true.
+
+Simply:
+
+```text
+p-value tells us how much evidence we have against H₀.
+```
+
+### Interpretation
+
+Small p-value:
+
+```text
+Strong evidence against H₀
+```
+
+Large p-value:
+
+```text
+Weak evidence against H₀
+```
+
+### Example
+
+Suppose:
+
+```text
+H₀: New website does not improve conversion rate
+```
+
+Result:
+
+```text
+p-value = 0.02
+```
+
+Meaning:
+
+```text
+There is a 2% chance of observing these results if H₀ is true.
+```
+
+Therefore:
+
+```text
+Strong evidence against H₀
+```
+
+---
+
+### Interview Tip
+
+❌ Wrong Answer:
+
+```text
+p-value is the probability that H₀ is true.
+```
+
+✅ Correct Answer:
+
+```text
+p-value is the probability of observing the data assuming H₀ is true.
+```
+
+---
+
+# 2. What does p < 0.05 mean?
+
+## Interview Answer
+
+When:
+
+```text
+p < 0.05
+```
+
+it means the observed result is statistically significant at the 5% significance level.
+
+Therefore:
+
+```text
+Reject H₀
+```
+
+and conclude that there is evidence supporting H₁.
+
+---
+
+### Example
+
+Suppose:
+
+```text
+p-value = 0.03
+```
+
+Since:
+
+```text
+0.03 < 0.05
+```
+
+Decision:
+
+```text
+Reject H₀
+```
+
+Conclusion:
+
+```text
+There is statistically significant evidence that the groups are different.
+```
+
+---
+
+### Easy Memory Trick
+
+```text
+p < 0.05
+
+↓
+
+Reject H₀
+
+↓
+
+Statistically Significant
+```
+
+---
+
+# 3. Z-Test vs T-Test
+
+## Interview Answer
+
+Both tests compare means.
+
+The difference is when they are used.
+
+| Z-Test | T-Test |
+|----------|----------|
+| Population SD Known | Population SD Unknown |
+| Large Sample Size (n ≥ 30) | Small Sample Size (n < 30) |
+| Uses Z Distribution | Uses T Distribution |
+
+---
+
+### Z-Test Example
+
+```text
+100 employees surveyed
+Population SD known
+```
+
+Use:
+
+```text
+Z-Test
+```
+
+---
+
+### T-Test Example
+
+```text
+20 employees surveyed
+Population SD unknown
+```
+
+Use:
+
+```text
+T-Test
+```
+
+---
+
+### Interview One-Liner
+
+```text
+Use Z-Test when population variance is known and sample size is large.
+
+Use T-Test when population variance is unknown and sample size is small.
+```
+
+---
+
+# 4. When do we use ANOVA?
+
+## Interview Answer
+
+ANOVA (Analysis of Variance) is used to determine whether there is a statistically significant difference between the means of three or more groups.
+
+---
+
+### Example
+
+Compare average sales in:
+
+```text
+Region A
+
+Region B
+
+Region C
+```
+
+Since:
+
+```text
+More than 2 groups
+```
+
+Use:
+
+```text
+ANOVA
+```
+
+---
+
+### Hypotheses
+
+H₀:
+
+```text
+All group means are equal.
+```
+
+H₁:
+
+```text
+At least one group mean is different.
+```
+
+---
+
+### Why Not Multiple T-Tests?
+
+Because multiple T-tests increase:
+
+```text
+Type I Error
+```
+
+(False Positive Rate)
+
+ANOVA controls this risk.
+
+---
+
+### Interview One-Liner
+
+```text
+ANOVA is used to compare the means of three or more groups simultaneously.
+```
+
+---
+
+# 5. Type I Error vs Type II Error
+
+## Interview Answer
+
+These are mistakes we can make during hypothesis testing.
+
+---
+
+## Type I Error
+
+Definition:
+
+```text
+Rejecting a true H₀
+```
+
+Also called:
+
+```text
+False Positive
+```
+
+---
+
+### Example
+
+Medical Test:
+
+```text
+Person is healthy
+```
+
+but test says:
+
+```text
+Disease Present
+```
+
+False Positive.
+
+---
+
+## Type II Error
+
+Definition:
+
+```text
+Failing to reject a false H₀
+```
+
+Also called:
+
+```text
+False Negative
+```
+
+---
+
+### Example
+
+Medical Test:
+
+```text
+Person has disease
+```
+
+but test says:
+
+```text
+No Disease
+```
+
+False Negative.
+
+---
+
+## Comparison Table
+
+| Type I Error | Type II Error |
+|--------------|--------------|
+| False Positive | False Negative |
+| Reject True H₀ | Accept False H₀ |
+| Detect Effect When None Exists | Miss Real Effect |
+
+---
+
+### Easy Memory Trick
+
+Type I Error:
+
+```text
+False Alarm
+```
+
+Example:
+
+```text
+Fire alarm rings but no fire.
+```
+
+---
+
+Type II Error:
+
+```text
+Missed Alarm
+```
+
+Example:
+
+```text
+Fire exists but alarm doesn't ring.
+```
+
+---
+
+# Interviewer's Favourite Combined Question
+
+Question:
+
+```text
+A/B Test Result:
+
+p-value = 0.02
+
+What would you conclude?
+```
+
+Strong Answer:
+
+```text
+Since p-value (0.02) is less than 0.05,
+
+I would reject the Null Hypothesis.
+
+This indicates that the difference between the groups is statistically significant and unlikely to have occurred due to random chance.
+```
+
+---
+
+# Final Interview Revision
+
+✅ p-value → Evidence against H₀
+
+✅ p < 0.05 → Reject H₀
+
+✅ Z-Test → Large sample + known population SD
+
+✅ T-Test → Small sample + unknown population SD
+
+✅ ANOVA → Compare 3+ group means
+
+✅ Type I Error → False Positive
+
+✅ Type II Error → False Negative

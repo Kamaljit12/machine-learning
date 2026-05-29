@@ -1,14 +1,28 @@
-# Supervised Machine Learning - Detailed Notes
+# Supervised Machine Learning - Complete Interview & Project Oriented Notes
 
 # 1. What is Supervised Machine Learning?
 
-Supervised Learning is a Machine Learning technique where the model learns from historical labeled data.
+Supervised Learning is a Machine Learning approach where the model learns from labeled data.
 
-A label means the correct answer (target variable) is already available.
+Labeled data means:
 
-The model learns the relationship between input features (X) and output target (Y).
+```text
+Input Features (X) + Correct Output (Y)
+```
 
-After learning this relationship, the model can predict outputs for unseen data.
+The model learns the relationship between X and Y and uses this learned relationship to predict outputs for unseen data.
+
+---
+
+## Formula
+
+X → Y
+
+Where:
+
+X = Features (Independent Variables)
+
+Y = Target (Dependent Variable)
 
 ---
 
@@ -16,68 +30,496 @@ After learning this relationship, the model can predict outputs for unseen data.
 
 ### House Price Prediction
 
-| Area | Bedrooms | Location Score | Price |
+| Area | Bedrooms | Age of House | Price |
 |--------|--------|--------|--------|
-| 1000 | 2 | 8 | 50L |
-| 1500 | 3 | 9 | 75L |
-| 2000 | 4 | 10 | 100L |
+| 1000 | 2 | 10 | 50L |
+| 1500 | 3 | 5 | 75L |
+| 2000 | 4 | 2 | 100L |
 
-Features (X):
+Features (X)
+
 - Area
 - Bedrooms
-- Location Score
+- Age of House
 
-Target (Y):
+Target (Y)
+
 - Price
 
-Model learns:
+The model learns:
 
-(X) → Y
+```text
+Area + Bedrooms + House Age
+↓
+Price
+```
 
----
-
-# 2. Types of Supervised Learning
-
-## A. Regression
-
-Used when target variable is continuous.
-
-Examples:
-- House Price Prediction
-- Demand Forecasting
-- Temperature Prediction
-- Sales Forecasting
-
-Output Examples:
-
-50.5
-100.25
-250.78
+and predicts prices for new houses.
 
 ---
 
-## B. Classification
+# 2. Why is it Called Supervised Learning?
 
-Used when target variable is categorical.
+Because the model learns under supervision.
 
-Examples:
+During training, the correct answer is already available.
 
-- Spam Detection
-- Fraud Detection
-- Customer Churn
-- Disease Prediction
+Example:
 
-Output Examples:
+```text
+Input = House Features
+Output = House Price
 
-Yes / No
+Input = Customer Information
+Output = Churn
+```
 
-Spam / Not Spam
+The model compares:
+
+Predicted Output
+
+with
+
+Actual Output
+
+and continuously improves.
+
+---
+
+# 3. Real-World Examples
+
+## Banking
+
+### Loan Approval
+
+Input:
+
+- Salary
+- Credit Score
+- Existing Loans
+
+Output:
+
+Loan Approved / Rejected
+
+---
+
+### Fraud Detection
+
+Input:
+
+- Transaction Amount
+- Merchant
+- Location
+
+Output:
 
 Fraud / Not Fraud
 
 ---
 
-# 3. Supervised Learning Workflow
+## Retail
+
+### Demand Forecasting
+
+Input:
+
+- Historical Sales
+- Holiday Information
+- Promotions
+
+Output:
+
+Future Demand
+
+---
+
+## Healthcare
+
+### Disease Prediction
+
+Input:
+
+- Age
+- Symptoms
+- Test Reports
+
+Output:
+
+Disease Present / Not Present
+
+---
+
+## Oil & Gas
+
+### Fuel Demand Forecasting
+
+Input:
+
+- Historical Demand
+- Crude Oil Prices
+- Weather
+- Seasonality
+
+Output:
+
+Future Demand
+
+---
+
+# Interview Question
+
+### Give real-world examples of supervised learning.
+
+Answer:
+
+```text
+House price prediction,
+Fraud detection,
+Customer churn prediction,
+Demand forecasting,
+Disease prediction,
+Loan approval prediction.
+```
+
+---
+
+# 4. Types of Supervised Learning
+
+Supervised Learning is divided into:
+
+1. Regression
+2. Classification
+
+---
+
+# 5. Regression
+
+## Definition
+
+Regression predicts continuous numerical values.
+
+---
+
+## Examples
+
+### House Price Prediction
+
+Output:
+
+₹50,00,000
+
+₹75,50,000
+
+₹1,20,00,000
+
+---
+
+### Demand Forecasting
+
+Output:
+
+1250 units
+
+---
+
+### Temperature Forecasting
+
+Output:
+
+32.5°C
+
+---
+
+## Common Regression Algorithms
+
+### Linear Regression
+
+Most basic.
+
+---
+
+### Ridge Regression
+
+Linear Regression + L2 Regularization.
+
+---
+
+### Lasso Regression
+
+Linear Regression + L1 Regularization.
+
+---
+
+### ElasticNet
+
+Combination of:
+
+- L1
+- L2
+
+---
+
+### Random Forest Regressor
+
+Handles nonlinear relationships.
+
+---
+
+### XGBoost Regressor
+
+Industry favorite.
+
+---
+
+### LightGBM Regressor
+
+Fast and scalable.
+
+---
+
+# Interview Question
+
+### How do you identify a regression problem?
+
+Answer:
+
+```text
+If the target variable is continuous or numerical, it is a regression problem.
+```
+
+Examples:
+
+Price
+
+Revenue
+
+Temperature
+
+Demand
+
+Profit
+
+---
+
+# 6. Classification
+
+## Definition
+
+Classification predicts categories or classes.
+
+---
+
+## Examples
+
+### Spam Detection
+
+Output:
+
+Spam
+
+Not Spam
+
+---
+
+### Customer Churn
+
+Output:
+
+Leave
+
+Stay
+
+---
+
+### Fraud Detection
+
+Output:
+
+Fraud
+
+Not Fraud
+
+---
+
+## Types of Classification
+
+### Binary Classification
+
+Two classes.
+
+Examples:
+
+Yes / No
+
+Fraud / Not Fraud
+
+---
+
+### Multi-Class Classification
+
+More than two classes.
+
+Examples:
+
+Cat
+
+Dog
+
+Horse
+
+Elephant
+
+---
+
+### Multi-Label Classification
+
+Multiple labels possible.
+
+Example:
+
+Movie Genres
+
+Action
+
+Comedy
+
+Thriller
+
+One movie can belong to multiple categories.
+
+---
+
+## Common Classification Algorithms
+
+### Logistic Regression
+
+Industry baseline.
+
+---
+
+### Decision Tree
+
+Easy to interpret.
+
+---
+
+### Random Forest
+
+Ensemble method.
+
+---
+
+### XGBoost
+
+Most widely used.
+
+---
+
+### LightGBM
+
+Fast gradient boosting.
+
+---
+
+### CatBoost
+
+Excellent for categorical data.
+
+---
+
+### Support Vector Machine (SVM)
+
+Works well for small-medium datasets.
+
+---
+
+### KNN
+
+Distance-based algorithm.
+
+---
+
+### Naive Bayes
+
+Probability-based algorithm.
+
+---
+
+# Interview Question
+
+### How do you identify a classification problem?
+
+Answer:
+
+```text
+If the target variable contains categories or classes, it is a classification problem.
+```
+
+Examples:
+
+Spam/Not Spam
+
+Fraud/Not Fraud
+
+Disease/No Disease
+
+---
+
+# 7. Dataset Components
+
+Every supervised learning dataset contains:
+
+---
+
+## Features (X)
+
+Input variables.
+
+Examples:
+
+- Age
+- Salary
+- Experience
+
+---
+
+## Target (Y)
+
+Output variable.
+
+Examples:
+
+- Purchased
+- Churn
+- Price
+
+---
+
+# Example
+
+| Age | Salary | Experience | Purchased |
+|-------|-------|-------|-------|
+| 25 | 30000 | 2 | No |
+| 35 | 70000 | 8 | Yes |
+
+Features:
+
+```text
+Age
+Salary
+Experience
+```
+
+Target:
+
+```text
+Purchased
+```
+
+---
+
+# 8. Supervised Learning Workflow
 
 Business Problem
 ↓
@@ -105,422 +547,211 @@ Monitoring
 
 ---
 
-# 4. Features and Target
+# Important Industry Insight
 
-## Features (Independent Variables)
+In real projects:
 
-Input variables used for prediction.
+```text
+Data Collection + Cleaning + Feature Engineering
+≈ 70-80%
 
-Examples:
+Model Building
+≈ 20-30%
+```
 
-| Age | Salary | Experience |
-|-------|-------|-------|
+Many beginners think selecting XGBoost solves everything.
 
-These are features.
-
-Notation:
-
-X
-
----
-
-## Target (Dependent Variable)
-
-Output variable to predict.
-
-Examples:
-
-| Purchased |
-|------------|
-| Yes |
-| No |
-
-Notation:
-
-Y
+Experienced ML Engineers focus heavily on data quality.
 
 ---
 
-# 5. Feature Engineering
+# 9. Feature Engineering in Supervised Learning
 
 ## Definition
 
-Feature Engineering is the process of creating new useful features from existing data.
-
-It is one of the most important steps in Machine Learning.
-
-Many times Feature Engineering improves performance more than changing algorithms.
+Creating new useful features from existing data.
 
 ---
 
-## Why Feature Engineering?
+## Example
 
-Raw data often does not contain sufficient information.
+Date
 
-We create meaningful features to help the model learn patterns.
-
----
-
-## Example 1
-
-Raw Data:
-
-Date = 2025-06-01
+2025-01-15
 
 Create:
 
-- Day
+- Year
 - Month
 - Quarter
-- Weekday
+- Day
 - Weekend Flag
 
 ---
 
-## Example 2
+## Time Series Example
 
-Date of Birth
-
-DOB = 1995-10-15
+Historical Demand
 
 Create:
 
-Age = Current Date - DOB
-
-Age is more useful than DOB.
-
----
-
-## Example 3
-
-Transaction Data
-
-Purchase Amount = 5000
-
-Customer Income = 50000
-
-Create:
-
-Purchase Ratio
-
-Purchase Amount / Income
+- Lag Features
+- Rolling Mean
+- Moving Average
+- Seasonal Indicators
 
 ---
 
-## Common Feature Engineering Techniques
+# Interview Question
 
-### Date Features
+### Why is Feature Engineering important?
 
-Extract:
+Answer:
 
-- Year
-- Month
-- Day
-- Week
-- Quarter
-- Weekend
+```text
+Feature Engineering often contributes more to model performance than changing algorithms.
+```
 
 ---
 
-### Aggregation Features
-
-Examples:
-
-Customer Total Purchase
-
-Customer Average Purchase
-
-Customer Purchase Frequency
-
----
-
-### Interaction Features
-
-Combine features.
-
-Example:
-
-Area × Rooms
-
-Income × Experience
-
----
-
-### Domain-Based Features
-
-Created using business knowledge.
-
-Example:
-
-Oil & Gas
-
-Create:
-
-7-Day Moving Average
-
-30-Day Demand Average
-
-Seasonality Index
-
-Holiday Impact
-
----
-
-# 6. Feature Selection
+# 10. Feature Selection
 
 ## Definition
 
-Feature Selection is the process of selecting only useful features and removing unnecessary features.
+Selecting useful features and removing irrelevant features.
 
 ---
 
-## Why Feature Selection?
-
-Benefits:
+## Benefits
 
 - Faster training
-- Less memory usage
-- Better interpretability
-- Reduced overfitting
 - Better generalization
+- Reduced overfitting
+- Improved interpretability
 
 ---
 
-## Example
+## Methods
 
-Original Features
+### Filter Methods
 
-Age
-Salary
-Gender
-Phone Number
-Customer ID
-
-Customer ID often provides no predictive power.
-
-Remove:
-
-Customer ID
+- Correlation
+- Chi-Square
+- ANOVA
+- Mutual Information
 
 ---
 
-## Types of Feature Selection
+### Wrapper Methods
 
-### A. Filter Methods
-
-Uses statistical methods.
-
-Independent of ML model.
+- Forward Selection
+- Backward Elimination
+- RFE
 
 ---
 
-### Correlation
+### Embedded Methods
 
-Remove highly correlated features.
-
-Example:
-
-Salary and Annual Income
-
-Correlation = 0.98
-
-Keep one.
-
----
-
-### Chi-Square Test
-
-Used for:
-
-Categorical Features
-
-Classification Problems
-
----
-
-### ANOVA
-
-Used for:
-
-Numerical Features
-
-Classification Problems
-
----
-
-### Mutual Information
-
-Measures dependency between feature and target.
-
-Higher value = more useful.
-
----
-
-# B. Wrapper Methods
-
-Uses actual model performance.
-
-More accurate but computationally expensive.
-
----
-
-## Forward Selection
-
-Start with no features.
-
-Add features one by one.
-
-Keep best features.
-
----
-
-## Backward Elimination
-
-Start with all features.
-
-Remove least useful features.
-
----
-
-## Recursive Feature Elimination (RFE)
-
-Train Model
-↓
-Remove Weakest Feature
-↓
-Train Again
-↓
-Repeat
-
-Very popular.
-
----
-
-# C. Embedded Methods
-
-Feature selection happens during training.
-
-Examples:
-
-- Lasso Regression
+- Lasso
 - Random Forest
 - XGBoost
 
-Most widely used in industry.
+---
+
+# Interview Question
+
+### Difference Between Feature Engineering and Feature Selection?
+
+Answer:
+
+```text
+Feature Engineering creates new features.
+
+Feature Selection chooses the most useful features.
+```
 
 ---
 
-# 7. Feature Importance
+# 11. Feature Importance
 
 ## Definition
 
-Feature Importance indicates how much a feature contributes to prediction.
-
----
-
-## Why Important?
-
-Helps answer:
-
-Which features matter most?
-
-Why is model making predictions?
+Measures how much a feature contributes to prediction.
 
 ---
 
 ## Example
 
-Customer Churn Model
+Customer Churn
 
 | Feature | Importance |
 |-----------|-----------|
-| Monthly Charges | 40% |
-| Contract Type | 25% |
-| Tenure | 20% |
-| Gender | 2% |
-
-Monthly Charges are most influential.
+| Monthly Charges | 45% |
+| Tenure | 25% |
+| Contract Type | 20% |
 
 ---
 
-# Feature Importance Methods
+## Common Methods
 
-## Tree-Based Importance
+### Tree-Based Importance
 
-Used in:
+Random Forest
 
-- Random Forest
-- XGBoost
-- LightGBM
-- CatBoost
+XGBoost
 
-Most common approach.
+LightGBM
 
 ---
 
-## Permutation Importance
+### Permutation Importance
 
-Shuffle one feature.
-
-Observe performance drop.
-
-Large drop = Important feature.
+More reliable.
 
 ---
 
-## SHAP Values
+### SHAP
 
-Industry standard explainability method.
+Industry standard.
 
 Provides:
 
-Global Explanation
-
-Which features matter overall.
-
-AND
-
-Local Explanation
-
-Why specific prediction occurred.
+- Global Explanation
+- Local Explanation
 
 ---
 
-# 8. Feature Transformation
+# Interview Question
 
-## Definition
+### Can Feature Importance be misleading?
 
-Changing feature values into better representations.
+Answer:
 
-Goal:
+```text
+Yes.
 
-Make data suitable for ML algorithms.
+Tree-based feature importance can be biased toward high-cardinality and continuous features.
+
+SHAP and Permutation Importance often provide more reliable interpretations.
+```
 
 ---
 
-# Why Transform Features?
+# 12. Feature Transformation
+
+## Why Transform Features?
 
 Many algorithms assume:
 
-- Normal distribution
 - Similar scales
+- Normal distributions
 - Linear relationships
-
-Transformations help satisfy assumptions.
 
 ---
 
-# Types of Feature Transformation
-
-## A. Scaling
+## Scaling
 
 ### Standardization
-
-Formula:
-
-Z = (X - Mean) / Std
-
-Result:
 
 Mean = 0
 
@@ -530,16 +761,12 @@ Used in:
 
 - Logistic Regression
 - SVM
-- PCA
 - KNN
+- PCA
 
 ---
 
 ### Normalization
-
-Formula:
-
-(X - Min)/(Max - Min)
 
 Range:
 
@@ -548,162 +775,104 @@ Range:
 Used in:
 
 - Neural Networks
-- Deep Learning
 
 ---
 
-# B. Log Transformation
+## Log Transformation
 
-Used when data is highly skewed.
+Used for highly skewed data.
 
 Example:
 
 Income
 
 1000
+
 2000
+
 5000
+
 1000000
 
-Apply:
-
-log(x)
-
-Makes distribution more normal.
+Apply log transformation.
 
 ---
 
-# C. Power Transformation
+# Interview Question
 
-Examples:
+### Which algorithms require scaling?
 
-- Box-Cox
-- Yeo-Johnson
+Answer:
 
-Used for reducing skewness.
-
----
-
-# D. Binning
-
-Convert numerical values into categories.
-
-Example:
-
-Age
-
-18-25
-26-35
-36-50
-50+
-
-Useful for business interpretation.
+```text
+KNN,
+SVM,
+Logistic Regression,
+Neural Networks,
+PCA.
+```
 
 ---
 
-# E. Polynomial Features
+### Which algorithms generally do not require scaling?
 
-Create higher-order relationships.
+Answer:
 
-Example:
-
-X
-
-Create:
-
-X²
-
-X³
-
-Useful in Linear Regression.
+```text
+Decision Trees,
+Random Forest,
+XGBoost,
+LightGBM,
+CatBoost.
+```
 
 ---
 
-# 9. Encoding Categorical Variables
-
-Machine Learning models understand numbers only.
-
-Convert categories into numbers.
-
----
-
-## Label Encoding
-
-Male → 0
-
-Female → 1
-
-Used for ordinal categories.
-
----
-
-## One Hot Encoding
-
-Color
-
-Red
-Blue
-Green
-
-Convert to:
-
-Color_Red
-Color_Blue
-Color_Green
-
-Most common.
-
----
-
-## Target Encoding
-
-Replace category with average target value.
-
-Used in high-cardinality data.
-
-Example:
-
-Thousands of cities.
-
----
-
-# 10. Handling Missing Values
+# 13. Missing Value Handling
 
 ## Common Methods
 
 ### Mean Imputation
 
-Replace with mean.
+Use average value.
 
 ---
 
 ### Median Imputation
 
-Best for skewed data.
+Best for skewed distributions.
 
 ---
 
 ### Mode Imputation
 
-For categorical features.
+For categorical variables.
 
 ---
 
 ### KNN Imputation
 
-Uses neighboring records.
+Uses neighboring samples.
 
-More accurate.
-
----
-
-# 11. Handling Outliers
-
-Outliers can distort models.
+More sophisticated.
 
 ---
 
-## Detection Methods
+# Interview Question
+
+### Why prefer median over mean?
+
+Answer:
+
+```text
+Median is less sensitive to outliers and skewed data.
+```
+
+---
+
+# 14. Outlier Handling
+
+## Detection
 
 ### IQR Method
 
@@ -711,7 +880,7 @@ Most common.
 
 ---
 
-### Z-Score Method
+### Z-Score
 
 Statistical approach.
 
@@ -722,82 +891,78 @@ Statistical approach.
 - Remove
 - Cap
 - Transform
-- Use robust models
+- Keep (if business meaningful)
 
 ---
 
-# 12. Multicollinearity
+# Interview Question
 
-## Definition
+### Should outliers always be removed?
 
-Features highly correlated with each other.
+Answer:
 
-Example:
+```text
+No.
 
-Salary
-Annual Salary
+Some outliers represent important business events.
 
-Both contain similar information.
+Examples:
 
----
-
-## Problems
-
-- Unstable coefficients
-- Poor interpretability
-- Increased variance
+Fraud transactions,
+Demand spikes,
+System failures.
+```
 
 ---
 
-## Detection
+# 15. Overfitting and Underfitting
 
-### Correlation Matrix
-
-### VIF (Variance Inflation Factor)
-
-Rule:
-
-VIF > 5
-
-Potential issue
-
-VIF > 10
-
-Serious issue
-
----
-
-# 13. Data Leakage
-
-## Definition
-
-Information unavailable during prediction accidentally enters training.
-
----
-
-## Example
-
-Predict:
-
-Customer Churn
-
-Feature:
-
-Cancellation Date
-
-This feature already reveals churn.
-
-Model becomes unrealistic.
-
----
-
-# 14. Bias-Variance in Supervised Learning
-
-## High Bias
+## Underfitting
 
 Model too simple.
 
-Result:
+Training Performance → Poor
+
+Testing Performance → Poor
+
+---
+
+## Overfitting
+
+Model memorizes data.
+
+Training Performance → Excellent
+
+Testing Performance → Poor
+
+---
+
+## Good Fit
+
+Training and Testing performance are similar.
+
+---
+
+# Interview Question
+
+### How do you reduce overfitting?
+
+Answer:
+
+```text
+Feature Selection
+Regularization
+Cross Validation
+More Data
+Pruning
+Ensemble Methods
+```
+
+---
+
+# 16. Bias-Variance Tradeoff
+
+## High Bias
 
 Underfitting
 
@@ -805,120 +970,355 @@ Underfitting
 
 ## High Variance
 
-Model too complex.
-
-Result:
-
 Overfitting
 
 ---
 
-## Goal
+Goal:
 
 Low Bias + Low Variance
 
 ---
 
-# 15. Important Interview Questions
+# Interview Question
 
-### Q1. Difference Between Feature Engineering and Feature Selection?
+### Why is Bias-Variance Tradeoff important?
 
-Feature Engineering:
-Create new features.
+Answer:
 
-Feature Selection:
-Choose best features.
-
----
-
-### Q2. Why Feature Selection?
-
-- Reduce overfitting
-- Faster training
-- Better interpretability
-- Improve generalization
+```text
+It helps find the right model complexity that generalizes well on unseen data.
+```
 
 ---
 
-### Q3. Why Feature Scaling?
+# 17. Evaluation Metrics
 
-Many algorithms depend on distance calculations.
+# Regression Metrics
 
-Examples:
+### MAE
 
-- KNN
-- SVM
-- PCA
-
-Without scaling, large-valued features dominate.
+Average absolute error.
 
 ---
 
-### Q4. Which Algorithms Provide Feature Importance?
+### MSE
 
+Squares errors.
+
+---
+
+### RMSE
+
+Most common regression metric.
+
+---
+
+### R² Score
+
+Explains variance captured by model.
+
+---
+
+# Classification Metrics
+
+### Accuracy
+
+Correct Predictions / Total Predictions
+
+---
+
+### Precision
+
+Predicted Positive Accuracy
+
+---
+
+### Recall
+
+Actual Positive Coverage
+
+---
+
+### F1 Score
+
+Balance of Precision and Recall
+
+---
+
+### ROC-AUC
+
+Overall ranking ability.
+
+---
+
+# Interview Question
+
+### Why Accuracy can be misleading?
+
+Answer:
+
+```text
+In imbalanced datasets, a model can achieve high accuracy while completely missing minority class predictions.
+```
+
+---
+
+# 18. Data Leakage
+
+## Definition
+
+Future or unavailable information accidentally enters training.
+
+---
+
+## Example
+
+Predict Churn
+
+Feature:
+
+Cancellation Date
+
+This directly reveals churn.
+
+---
+
+# Interview Question
+
+### Why is Data Leakage dangerous?
+
+Answer:
+
+```text
+It creates unrealistic performance and causes failure in production.
+```
+
+---
+
+# 19. Explainability in Supervised Learning
+
+Business users ask:
+
+Why did the model predict this?
+
+---
+
+## Tools
+
+### SHAP
+
+Industry standard.
+
+---
+
+### LIME
+
+Local explanations.
+
+---
+
+### Permutation Importance
+
+Feature contribution.
+
+---
+
+# Example
+
+Loan Rejection
+
+Reasons:
+
+- Low Income
+- High Debt
+- Poor Credit History
+
+---
+
+# 20. Production Challenges
+
+## Data Drift
+
+Input data changes.
+
+---
+
+## Concept Drift
+
+Relationship between X and Y changes.
+
+---
+
+## Model Drift
+
+Performance degrades over time.
+
+---
+
+# Interview Question
+
+### Why do models fail after deployment?
+
+Answer:
+
+```text
+Data Drift,
+Concept Drift,
+Business Changes,
+Poor Data Quality,
+Data Leakage.
+```
+
+---
+
+# Real Project Example
+
+## Customer Churn Prediction
+
+### Business Problem
+
+Predict customers likely to leave.
+
+---
+
+### Features
+
+- Monthly Charges
+- Contract Type
+- Tenure
+- Support Calls
+
+---
+
+### Feature Engineering
+
+Created:
+
+- Customer Lifetime Value
+- Average Monthly Spend
+
+---
+
+### Models
+
+- Logistic Regression
 - Random Forest
 - XGBoost
-- LightGBM
-- CatBoost
 
 ---
 
-### Q5. What is Multicollinearity?
+### Evaluation
 
-High correlation among independent variables.
+Metrics:
 
-Detected using:
-
-- Correlation Matrix
-- VIF
-
----
-
-### Q6. What is Data Leakage?
-
-When future information accidentally enters training data.
-
-Causes unrealistically high performance.
+- Precision
+- Recall
+- F1
+- ROC-AUC
 
 ---
 
-# Industry Best Practices
+### Best Model
 
-✅ Start with business understanding.
+XGBoost
 
-✅ Spend 70-80% effort on data and features.
+Reason:
 
-✅ Perform EDA before modeling.
-
-✅ Handle missing values carefully.
-
-✅ Remove leakage features.
-
-✅ Use Feature Importance to understand model behavior.
-
-✅ Use SHAP for explainability.
-
-✅ Perform Feature Selection before Hyperparameter Tuning.
-
-✅ Create domain-specific features.
-
-✅ Always validate features on unseen data.
+Better recall and ROC-AUC.
 
 ---
 
-# Most Important Concepts for Interviews and Real Projects
+### Deployment
 
-1. Feature Engineering
-2. Feature Selection
-3. Feature Importance
-4. Feature Transformation
-5. Encoding Techniques
-6. Missing Value Handling
-7. Outlier Treatment
-8. Multicollinearity
-9. Data Leakage
-10. Explainable AI (SHAP)
-11. Bias-Variance Tradeoff
-12. Model Evaluation Metrics
+FastAPI + Docker
 
-These 12 topics form the core of practical Supervised Machine Learning used in almost every industry project.
+---
+
+### Monitoring
+
+- Drift Monitoring
+- Performance Monitoring
+
+---
+
+# Frequently Asked Interview Questions
+
+## Beginner
+
+1. What is supervised learning?
+2. Difference between regression and classification?
+3. What are features and target?
+4. What is overfitting?
+5. What is underfitting?
+6. What is train-test split?
+
+---
+
+## Intermediate
+
+1. Why use cross-validation?
+2. Why perform feature selection?
+3. How do you handle missing values?
+4. Why use SHAP?
+5. How do you detect multicollinearity?
+6. What is data leakage?
+
+---
+
+## Advanced
+
+1. Why is XGBoost often better than Random Forest?
+2. Explain SHAP mathematically.
+3. How do you monitor a supervised model in production?
+4. How do you handle class imbalance?
+5. How would you design a feature store?
+6. How would you detect concept drift?
+
+---
+
+# Common Mistakes in Supervised Learning
+
+❌ Ignoring Data Leakage
+
+❌ Using Accuracy only
+
+❌ No Feature Engineering
+
+❌ No Cross Validation
+
+❌ Ignoring Class Imbalance
+
+❌ Ignoring Drift Monitoring
+
+❌ Not Understanding Business Problem
+
+❌ Directly Jumping to Complex Models
+
+---
+
+# Interview Revision Notes
+
+✅ Supervised Learning uses labeled data.
+
+✅ Two main types:
+- Regression
+- Classification
+
+✅ Features = Inputs
+
+✅ Target = Output
+
+✅ Feature Engineering often improves performance more than algorithm selection.
+
+✅ Feature Selection reduces overfitting and improves interpretability.
+
+✅ Accuracy is not enough for imbalanced datasets.
+
+✅ Data Leakage is one of the biggest causes of project failure.
+
+✅ SHAP is the most widely used explainability tool.
+
+✅ Production models require monitoring and retraining.
+
+✅ Good ML Engineers focus more on data quality than algorithm complexity.

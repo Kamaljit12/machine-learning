@@ -1461,3 +1461,579 @@ RMSE penalizes large errors much more heavily than MAE, causing RMSE to increase
 ```text
 MAE measures average error, RMSE emphasizes large errors, MAPE explains errors as percentages, and Adjusted R² balances model performance with model complexity.
 ```
+
+
+# 1. MAE vs RMSE?
+
+# Interviewer's Favourite Question
+
+## Strong Answer
+
+Both MAE and RMSE measure prediction error, but they treat errors differently.
+
+| MAE | RMSE |
+|--------|--------|
+| Mean Absolute Error | Root Mean Squared Error |
+| Uses absolute errors | Uses squared errors |
+| Less sensitive to outliers | More sensitive to outliers |
+| Treats all errors equally | Penalizes large errors heavily |
+| Easier to interpret | Better when large errors are costly |
+
+---
+
+## Example
+
+Suppose two models:
+
+### Model A
+
+Errors:
+
+```text
+10, 10, 10
+```
+
+MAE:
+
+```text
+10
+```
+
+RMSE:
+
+```text
+10
+```
+
+---
+
+### Model B
+
+Errors:
+
+```text
+1, 1, 28
+```
+
+MAE:
+
+```text
+10
+```
+
+RMSE:
+
+```text
+16.18
+```
+
+Although MAE is same, RMSE is larger because it penalizes the large error (28).
+
+---
+
+## When to Use MAE?
+
+```text
+When all errors should be treated equally.
+```
+
+Examples:
+
+- Demand Forecasting
+- Inventory Prediction
+
+---
+
+## When to Use RMSE?
+
+```text
+When large prediction errors are costly.
+```
+
+Examples:
+
+- House Price Prediction
+- Medical Prediction
+- Financial Forecasting
+
+---
+
+## One-Line Interview Answer
+
+```text
+MAE treats all errors equally, while RMSE penalizes large errors more heavily due to squaring.
+```
+
+---
+
+# 2. Why do we square errors in MSE?
+
+# Extremely Important
+
+---
+
+## Strong Answer
+
+Errors are squared for two reasons:
+
+### Reason 1
+
+Prevent positive and negative errors from canceling each other.
+
+Example:
+
+```text
+Actual = 100
+
+Prediction = 90
+
+Error = -10
+```
+
+Another:
+
+```text
+Actual = 100
+
+Prediction = 110
+
+Error = +10
+```
+
+Average:
+
+```text
+(-10 + 10)/2
+
+= 0
+```
+
+This incorrectly suggests perfect prediction.
+
+Squaring fixes this.
+
+---
+
+### Reason 2
+
+Penalize large errors more heavily.
+
+Example:
+
+Error:
+
+```text
+10 → 100
+```
+
+Error:
+
+```text
+100 → 10000
+```
+
+Large errors become much more costly.
+
+---
+
+## Why is this useful?
+
+In real business problems:
+
+```text
+A ₹1 lakh prediction error
+
+is much worse than
+
+ten ₹10,000 errors.
+```
+
+MSE captures this.
+
+---
+
+## One-Line Interview Answer
+
+```text
+We square errors to prevent cancellation of positive and negative errors and to penalize larger prediction mistakes more heavily.
+```
+
+---
+
+# 3. What does R² mean?
+
+# Most Asked R² Question
+
+---
+
+## Strong Answer
+
+R² (Coefficient of Determination) measures how much of the variance in the target variable is explained by the model.
+
+---
+
+## Example
+
+Suppose:
+
+```text
+R² = 0.80
+```
+
+Interpretation:
+
+```text
+The model explains 80% of the variability in the target variable.
+```
+
+Remaining:
+
+```text
+20%
+```
+
+is unexplained.
+
+---
+
+## R² Values
+
+### R² = 1
+
+```text
+Perfect Model
+```
+
+---
+
+### R² = 0
+
+```text
+No better than predicting the mean.
+```
+
+---
+
+### R² = 0.75
+
+```text
+75% variance explained.
+```
+
+---
+
+## Real Example
+
+House Price Prediction
+
+```text
+R² = 0.90
+```
+
+Means:
+
+```text
+90% of house price variation is explained by the model.
+```
+
+---
+
+## One-Line Interview Answer
+
+```text
+R² measures the proportion of variance in the target variable explained by the model.
+```
+
+---
+
+# 4. Can R² be negative?
+
+# Interviewer's Favourite Trick Question
+
+---
+
+## Strong Answer
+
+Yes.
+
+R² can be negative.
+
+---
+
+## Why?
+
+A negative R² means:
+
+```text
+The model performs worse than simply predicting the mean.
+```
+
+---
+
+## Example
+
+Suppose:
+
+Actual Values:
+
+```text
+100
+120
+140
+```
+
+Mean:
+
+```text
+120
+```
+
+---
+
+Predicting Mean:
+
+```text
+120
+120
+120
+```
+
+may perform better than your model.
+
+Then:
+
+```text
+R² < 0
+```
+
+---
+
+## Reasons for Negative R²
+
+### Poor Model
+
+```text
+Wrong algorithm
+```
+
+---
+
+### Bad Features
+
+```text
+Irrelevant features
+```
+
+---
+
+### Underfitting
+
+```text
+Model too simple
+```
+
+---
+
+### Data Issues
+
+```text
+Noise
+Missing values
+```
+
+---
+
+## One-Line Interview Answer
+
+```text
+Yes, R² can be negative when the model performs worse than simply predicting the mean of the target variable.
+```
+
+---
+
+# 5. Why do we need Adjusted R²?
+
+# Extremely Important
+
+---
+
+## Problem with R²
+
+R² always increases or remains the same when new features are added.
+
+Even if those features are useless.
+
+---
+
+## Example
+
+House Price Model
+
+Useful Features:
+
+```text
+Area
+Bedrooms
+Location
+```
+
+---
+
+Now add:
+
+```text
+Customer ID
+Random Number
+Favorite Color
+```
+
+R² may still increase.
+
+But model is not actually better.
+
+---
+
+## Solution
+
+Adjusted R² penalizes unnecessary features.
+
+---
+
+## How?
+
+It considers:
+
+```text
+Number of Features
+```
+
+and
+
+```text
+Number of Observations
+```
+
+before rewarding improvement.
+
+---
+
+## Interpretation
+
+### If new feature is useful
+
+```text
+Adjusted R² increases
+```
+
+---
+
+### If new feature is useless
+
+```text
+Adjusted R² decreases
+```
+
+---
+
+## Why is it Important?
+
+Prevents:
+
+```text
+Overfitting
+
+Feature Explosion
+
+Misleading Performance
+```
+
+---
+
+## R² vs Adjusted R²
+
+| R² | Adjusted R² |
+|--------|--------|
+| Always Increases | Can Increase or Decrease |
+| No Feature Penalty | Penalizes Extra Features |
+| Less Reliable | More Reliable |
+
+---
+
+## One-Line Interview Answer
+
+```text
+Adjusted R² accounts for model complexity and prevents misleading improvements caused by adding irrelevant features.
+```
+
+---
+
+# Quick Revision
+
+## MAE vs RMSE
+
+```text
+MAE → Equal Error Treatment
+
+RMSE → Penalizes Large Errors
+```
+
+---
+
+## Why Square Errors?
+
+```text
+Prevent Cancellation
+
+Penalize Large Errors
+```
+
+---
+
+## R²
+
+```text
+Variance Explained
+```
+
+---
+
+## Negative R²
+
+```text
+Model Worse Than Mean Prediction
+```
+
+---
+
+## Adjusted R²
+
+```text
+R² With Feature Penalty
+```
+
+---
+
+# Interviewer's Favourite Combined Question
+
+Question:
+
+```text
+Your model has:
+
+R² = 0.92
+
+Adjusted R² = 0.60
+
+What does this indicate?
+```
+
+Strong Answer:
+
+```text
+The large gap suggests that many features may be irrelevant.
+
+R² has increased because of additional predictors, but Adjusted R² penalizes those unnecessary features.
+
+This is a sign of potential overfitting.
+```
+

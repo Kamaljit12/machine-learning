@@ -1423,3 +1423,19 @@ Random Search and Optuna can find near-optimal solutions much more efficiently.
 ```text
 Grid Search exhaustively searches, Random Search efficiently explores, Bayesian Optimization intelligently learns, and Optuna automates modern hyperparameter optimization with pruning.
 ```
+
+# 🎯 Interview Shortcut
+
+Remember this decision table:
+
+```text
+Small Search Space      → Grid Search
+
+Large Search Space      → Random Search
+
+Expensive Models        → Bayesian Optimization
+
+Deep Learning           → Optuna
+
+Need Faster Training    → Optuna + Pruning
+```

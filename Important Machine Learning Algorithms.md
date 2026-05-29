@@ -861,4 +861,18 @@ I start with a simple baseline model such as Linear Regression or Logistic Regre
 Then I compare more advanced models such as Random Forest, XGBoost, LightGBM, or CatBoost based on business requirements, interpretability needs, data size, and performance.
 ```
 
-This demonstrates practical ML experience and strong interview readiness.
+# This demonstrates practical ML experience and strong interview readiness.
+
+```text
+Interviewer's Favourite Question
+You have a tabular dataset with 500,000 rows.
+```
+# Which algorithm would you try first and why?
+
+Strong Answer:
+
+```text
+I would start with a baseline model such as Logistic Regression or Linear Regression depending on the problem.
+Then I would compare Random Forest and XGBoost.
+For large structured tabular datasets, XGBoost, LightGBM, and Random Forest typically provide strong performance while maintaining reasonable training times and explainability.
+```
